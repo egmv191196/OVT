@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Test Overcome</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="numTicket">001520</string>
+    <string name="titulo">Falla al dar de alta usuario</string>
+    <string name="tipo">bug</string>
+    <string name="gravedad">high</string>
+
+</resources>
