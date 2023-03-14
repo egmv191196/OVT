@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.egmvdev.testovercome.database.entities.Ticket;
 import com.egmvdev.testovercome.databinding.TicketItemBinding;
+import com.egmvdev.testovercome.detailticket.view.detailTicket;
 import com.egmvdev.testovercome.main.interfaces.OnItemClickListener;
 
 import java.util.List;
@@ -53,41 +54,31 @@ class ticketItemViewHolder extends RecyclerView.ViewHolder {
     }
 
     void setDatos(Ticket c) {
-        binding.tipoIncidencia.setText(c.idTicket + "");
+        binding.numTicket.setText("# de ticket: " + c.idTicket);
         binding.titulo.setText(c.titulo);
-        binding.tipoIncidencia.setText(c.tipoIncidencia + "");
-        binding.gravedad.setText(c.gravedad + "");
+        binding.tipoIncidencia.setText(c.tipoIncidencia == 0 ? "Incidencia: Bug": "Incidencia: Feature");
+        String gravedad = "";
+        switch (c.gravedad){
+            case 0:
+                gravedad = "Gravedad: Low";
+            break;
+            case 1:
+                gravedad = "Gravedad: Medium";
+                break;
+            case 2:
+                gravedad = "Gravedad: High";
+                break;
+            default:
+        }
+        binding.gravedad.setText(gravedad);
         binding.contenedor.setOnClickListener(v -> {
             Log.i("Adapter", c.titulo);
         });
-//        if (c.esTDC == 0) {
-//            binding.montoCuenta.setTextColor(ContextCompat.getColor(con, R.color.green_60));
-//            binding.montoCuenta.setText(UTMoneyUtil.cantidadFormateadaFromDouble(c.saldoActual));
-//            binding.consInfoCuentaTDC.setVisibility(View.GONE);
-//        } else {
-//            binding.consInfoCuentaTDC.setVisibility(View.VISIBLE);
-//            binding.tvMontoRestanteTDC.setText(UTMoneyUtil.cantidadFormateadaFromDouble(c.saldoLimite - c.saldoActual));
-//            binding.tvMontoLimiteTDC.setText(UTMoneyUtil.cantidadFormateadaFromDouble(c.saldoLimite));
-//            binding.indicadorMonto.setProgress(porcentajeRestante(c));
-//            if (c.saldoActual < 0) {
-//                binding.montoCuenta.setText(UTMoneyUtil.cantidadFormateadaFromDouble(c.saldoActual * -1));
-//                binding.montoCuenta.setTextColor(ContextCompat.getColor(con, R.color.green_60));
-//            } else {
-//                binding.montoCuenta.setText(UTMoneyUtil.cantidadFormateadaFromDouble(c.saldoActual));
-//                binding.montoCuenta.setTextColor(ContextCompat.getColor(con, R.color.red_60));
-//            }
-//        }
-//        if (c.activo == 1) {
-//            binding.switchOculto.setChecked(true);
-//        }
-//        binding.switchOculto.setOnClickListener(v -> {
-//            cuentasItemAdapter.adapterItemClickListener.onAdapterItemClickListener(getAdapterPosition());
-//        });
-//        binding.contenedor.setOnClickListener(v -> {
-//            Intent intent = new Intent(con, addCuentasActivity.class);
-//            intent.putExtra("Cuenta", c);
-//            con.startActivity(intent);
-//        });
+        binding.contenedor.setOnClickListener(v -> {
+            Intent intent = new Intent(con, detailTicket.class);
+            intent.putExtra("Ticket", c);
+            con.startActivity(intent);
+        });
     }
 
 //    public int porcentajeRestante(Ticket c) {

@@ -5,9 +5,55 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
+    <string name="add">Agregar ticket</string>
+    <string name="mostrarArchvidos">Mostrar Archivados</string>
+    <string name="add_tv_title">Ingresa la información del Ticket</string>
+    <string name="tituloTicket">Ingresa el titulo de ticket*</string>
+    <string name="nombreResponsable">Ingresa tu nombre*</string>
+    <string name="equipoResponsable">Selecciona al equipo responsable</string>
+    <string name="tipoIncidencia">Selecciona el tipo de incidencia*</string>
+    <string name="selectGravedad">Selecciona la gravedad de la incidencia*</string>
+    <string name="version">Escribe la versión con falla</string>
+    <string name="descripcion">Descripcion de la incidencia*</string>
+    <string name="tv_leyenda">*Datos obligatorios</string>
+    <string name="add_ticket">Registrar Ticket</string>
+    <string name="Todo">ToDo</string>
+    <string name="doing">Doing</string>
+    <string name="done">Done</string>
+    <string name="archivados">Tickets Archivados</string>
+    <string name="archivar">Archivar</string>
+
     <string name="numTicket">001520</string>
     <string name="titulo">Falla al dar de alta usuario</string>
     <string name="tipo">bug</string>
     <string name="gravedad">high</string>
+    <string name="fecha">14-03-2023</string>
+    <string name="nombre">Edgar Gabriel Martinez Villegas</string>
+    <string name="versionNumber">2.3</string>
+
+    <string name="stateDoing">Cambiar a doing</string>
+    <string name="stateDone">Cambiar a done</string>
+
+
+    <string name="low">Low</string>
+    <string name="medium">Medium</string>
+    <string name="high">High</string>
+
+    <array name="gravedadArray">
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+    </array>
+
+    <array name="tipoIncidencia">
+        <item>Bug</item>
+        <item>Feature</item>
+    </array>
+
+    <array name="equipoResponsable">
+        <item>Soporte</item>
+        <item>Desarrollo</item>
+        <item>Atención al cliente</item>
+    </array>
 
 </resources>

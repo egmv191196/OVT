@@ -4,39 +4,42 @@
     android:layout_height="wrap_content"
     android:id="@+id/contenedor"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="2dp">
+    android:layout_marginBottom="3dp"
+    android:padding="2dp"
+    android:background="@color/gray">
 
-    <TextView
-        android:id="@+id/numTicket"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/numTicket"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@id/titulo"
-        app:layout_constraintBottom_toBottomOf="@id/titulo"/>
     <TextView
         android:id="@+id/titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/titulo"
         android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/titulo"/>
+    <TextView
+        android:id="@+id/numTicket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/numTicket"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titulo"/>
     <TextView
         android:id="@+id/tipoIncidencia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tipo"
-        app:layout_constraintTop_toBottomOf="@id/titulo"
+        app:layout_constraintTop_toBottomOf="@id/numTicket"
         app:layout_constraintLeft_toLeftOf="parent"/>
     <TextView
         android:id="@+id/gravedad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/gravedad"
-        app:layout_constraintTop_toBottomOf="@id/titulo"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/tipoIncidencia"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase;
 import com.egmvdev.testovercome.database.dao.ticketDAO;
 import com.egmvdev.testovercome.database.entities.Ticket;
 
-@Database(entities = {Ticket.class}, version = 1)
+@Database(entities = {Ticket.class}, version = 1, exportSchema = false)
 public abstract class database extends RoomDatabase {
     public abstract ticketDAO ticketDAO();
 }

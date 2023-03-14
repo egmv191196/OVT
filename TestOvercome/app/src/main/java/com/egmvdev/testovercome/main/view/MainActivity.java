@@ -2,14 +2,15 @@ package com.egmvdev.testovercome.main.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Adapter;
 
+import com.egmvdev.testovercome.addticket.view.addTicket;
 import com.egmvdev.testovercome.database.entities.Ticket;
 import com.egmvdev.testovercome.databinding.ActivityMainBinding;
-import com.egmvdev.testovercome.main.interfaces.OnItemClickListener;
+import com.egmvdev.testovercome.main.viewmodel.mainViewModel;
+import com.egmvdev.testovercome.ticketarchivados.view.ticketsArchivados;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,57 +19,75 @@ public class MainActivity extends AppCompatActivity{
     private static final String TAG = MainActivity.class.getSimpleName();
     private ActivityMainBinding binding;
 
+    private mainViewModel viewModel;
+
     private List<Ticket> lista = new ArrayList<>();
-    private ticketItemAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        viewModel = new mainViewModel(this);
+        addActions();
+        createObserver();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         cargarVista();
     }
 
     public void cargarVista(){
-        Ticket t1 = new Ticket();
-        t1.idTicket = 001;
-        t1.titulo = "Tarea 1";
-        t1.gravedad = 1;
-        t1.tipoIncidencia = 2;
-        lista.add(t1);
+        viewModel.obtenerTicketsToDo();
+        viewModel.obtenerTicketsDoing();
+        viewModel.obtenerTicketsDone();
+    }
 
-        Ticket t2 = new Ticket();
-        t2.idTicket = 002;
-        t2.titulo = "Tarea 2";
-        t2.gravedad = 1;
-        t2.tipoIncidencia = 2;
-        lista.add(t2);
+    public void addActions(){
+        binding.btnAdd.setOnClickListener(v->{
+            startActivity(new Intent(this, addTicket.class));
+        });
+        binding.btnMostrarArchivdos.setOnClickListener(v->{
+            startActivity(new Intent(this, ticketsArchivados.class));
+        });
+    }
 
-        Ticket t3 = new Ticket();
-        t3.idTicket = 003;
-        t3.titulo = "Tarea 3";
-        t3.gravedad = 1;
-        t3.tipoIncidencia = 2;
-        lista.add(t3);
-        LinearLayoutManager verticalManager1 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        binding.rvDoing.setLayoutManager(verticalManager1);
-        binding.rvDoing.setHasFixedSize(true);
-        adapter = new ticketItemAdapter(lista);
-        binding.rvDoing.setAdapter(adapter);
+    public void createObserver() {
+        viewModel.getTicketsToDo().observe(this, this::cargarVistaToDo);
+        viewModel.getTicketsDoing().observe(this, this::cargarVistaDoing);
+        viewModel.getTicketsDone().observe(this, this::cargarVistaDone);
+//        viewModel.getTicketsArchivados().observe(this, this::mostrarCuentas);
+    }
 
 
+    public void cargarVistaToDo(List<Ticket> lista){
         LinearLayoutManager verticalManager2 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         binding.rvToDo.setLayoutManager(verticalManager2);
         binding.rvToDo.setHasFixedSize(true);
-        adapter = new ticketItemAdapter(lista);
-        binding.rvToDo.setAdapter(adapter);
-
-
-        LinearLayoutManager verticalManager3 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        binding.rvDone.setLayoutManager(verticalManager3);
-        binding.rvDone.setHasFixedSize(true);
-        adapter = new ticketItemAdapter(lista);
-        binding.rvDone.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        ticketItemAdapter adapter1;
+        adapter1 = new ticketItemAdapter(lista);
+        binding.rvToDo.setAdapter(adapter1);
+        adapter1.notifyDataSetChanged();
     }
 
+    public void cargarVistaDoing(List<Ticket> lista) {
+        LinearLayoutManager verticalManager1 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        binding.rvDoing.setLayoutManager(verticalManager1);
+        binding.rvDoing.setHasFixedSize(true);
+        ticketItemAdapter adapter2;
+        adapter2 = new ticketItemAdapter(lista);
+        binding.rvDoing.setAdapter(adapter2);
+        adapter2.notifyDataSetChanged();
+    }
+
+    public void cargarVistaDone(List<Ticket> lista) {
+        LinearLayoutManager verticalManager1 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        binding.rvDone.setLayoutManager(verticalManager1);
+        binding.rvDone.setHasFixedSize(true);
+        ticketItemAdapter adapter3;
+        adapter3 = new ticketItemAdapter(lista);
+        binding.rvDone.setAdapter(adapter3);
+        adapter3.notifyDataSetChanged();
+    }
 }

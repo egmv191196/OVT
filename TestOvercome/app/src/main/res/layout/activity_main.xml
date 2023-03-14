@@ -4,28 +4,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/purple_200"
     tools:context=".main.view.MainActivity">
+
+    <TextView
+        android:id="@+id/tv_TitleToDo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/Todo"
+        android:textAlignment="center"
+        android:layout_margin="1dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/rv_Doing"/>
+
+    <TextView
+        android:id="@+id/tv_TitleDoing"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/doing"
+        android:textAlignment="center"
+        android:layout_margin="1dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/rv_ToDo"
+        app:layout_constraintRight_toLeftOf="@id/rv_Done"/>
+
+    <TextView
+        android:id="@+id/tv_TitleDone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/done"
+        android:textAlignment="center"
+        android:layout_margin="1dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/rv_Doing"
+        app:layout_constraintRight_toRightOf="parent"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_ToDo"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/tv_TitleToDo"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/rv_Doing"/>
+        app:layout_constraintRight_toLeftOf="@id/rv_Doing"
+        app:layout_constraintBottom_toTopOf="@id/btn_add"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_Doing"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/tv_TitleDoing"
         app:layout_constraintLeft_toRightOf="@id/rv_ToDo"
-        app:layout_constraintRight_toLeftOf="@id/rv_Done"/>
+        app:layout_constraintRight_toLeftOf="@id/rv_Done"
+        app:layout_constraintBottom_toTopOf="@id/btn_add"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_Done"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/tv_TitleDone"
         app:layout_constraintLeft_toRightOf="@id/rv_Doing"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_add"/>
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/add"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btn_mostrarArchivdos"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/btn_mostrarArchivdos"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/mostrarArchvidos"
+    app:layout_constraintLeft_toRightOf="@id/btn_add"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

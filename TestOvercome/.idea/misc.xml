@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Desarrollo/Android/OVT/TestOvercome/app/src/main/res/layout/activity_main.xml" value="0.14" />
+        <entry key="..\:/Desarrollo/Android/OVT/TestOvercome/app/src/main/res/layout/activity_add_ticket.xml" value="0.25" />
+        <entry key="..\:/Desarrollo/Android/OVT/TestOvercome/app/src/main/res/layout/activity_detail_ticket.xml" value="0.25" />
+        <entry key="..\:/Desarrollo/Android/OVT/TestOvercome/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Desarrollo/Android/OVT/TestOvercome/app/src/main/res/layout/activity_tickets_archivados.xml" value="0.1" />
         <entry key="..\:/Desarrollo/Android/OVT/TestOvercome/app/src/main/res/layout/ticket_item.xml" value="0.21" />
         <entry key="..\:/Desarrollo/Android/OVT/TestOvercome/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20416666666666666" />
       </map>
